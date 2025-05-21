@@ -80,9 +80,9 @@
 </template>
 
         <!-- QWeb Reports -->
-        <report
+         <report
             id="exe_reporte_funeraria_murziez.funer_account_payment_group_report"
-            model="sale.order"
+            model="account.move"
             string="Reporte Funeraria"
             report_type="qweb-pdf"
             name="exe_reporte_funeraria_murziez.reporte_funeraria_impreso"

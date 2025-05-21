@@ -4,4 +4,4 @@ from odoo.exceptions import ValidationError
 
 
 class ExeReporteFuneraria(models.Model):
-    _inherit = 'sale.order'
+    _inherit = 'account.move'
