@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+<template id="reporte_funeraria_impreso">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="web.external_layout">
+                <div class="page" style="width: 80mm; font-size: 10px;">
+                    <!-- Encabezado -->
+                    <div class="header">
+                        <div style="text-align: center;">
+                            <h3 style="margin: 5px;">MURZIEZ S.R.L</h3>
+                            <p style="margin: 2px;">REMEDIOS DE ESCALADA 3570 - Buenos Aires</p>
+                            <p style="margin: 2px;">Tel: 4660-1625 | www.murziez.ar</p>
+                        </div>
+                    </div>
+
+                    <hr style="border: 1px dashed;"/>
+
+                    <!-- Datos del cliente -->
+                    <div>
+                        <p><strong>Cliente:</strong> <t t-esc="doc.partner_id.name"/></p>
+                        <p><strong>DNI:</strong> <t t-esc="doc.partner_id.vat"/></p>
+                        <p><strong>Dirección:</strong> <t t-esc="doc.partner_id.street"/></p>
+                        <p><strong>Ciudad:</strong> <t t-esc="doc.partner_id.city"/> - <t t-esc="doc.partner_id.state_id.name"/> - <t t-esc="doc.partner_id.zip"/></p>
+                    </div>
+
+                    <hr style="border: 1px dashed;"/>
+
+                    <!-- Productos -->
+                    <div>
+                        <table class="table table-sm" style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="border-bottom: 1px dashed;">
+                                    <th style="text-align: left;">Nombre</th>
+                                    <th style="text-align: right;">Cant.</th>
+                                    <th style="text-align: right;">Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.order_line" t-as="line">
+                                    <tr>
+                                        <td><t t-esc="line.product_id.name"/></td>
+                                        <td style="text-align: right;"><t t-esc="line.product_uom_qty"/></td>
+                                        <td style="text-align: right;">$<t t-esc="line.price_total"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <hr style="border: 1px dashed;"/>
+
+                    <!-- Totales -->
+                    <div style="text-align: right;">
+                        <p><strong>Total:</strong> $<t t-esc="doc.amount_total"/></p>
+                    </div>
+
+                    <hr style="border: 1px dashed;"/>
+
+                    <!-- Pie de página -->
+                    <div class="footer" style="text-align: center;">
+                        <p>Gracias por su compra</p>
+                        <p>Página <span class="page"/> de <span class="topage"/></p>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+
+
+
+<template id="report_payment_group">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="reporte_funeraria.reporte_funeraria_impreso" t-lang="o.partner_id.lang"/>
+        </t>
+    </t>
+</template>
+
+        <!-- QWeb Reports -->
+        <report
+            id="exe_reporte_funeraria_murziez.funer_account_payment_group_report"
+            model="sale.order"
+            string="Reporte Funeraria"
+            report_type="qweb-pdf"
+            name="exe_reporte_funeraria_murziez.reporte_funeraria_impreso"
+            
+        />
+    
+</data>
+</odoo>
