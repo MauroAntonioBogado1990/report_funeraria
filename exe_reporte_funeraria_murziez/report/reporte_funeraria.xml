@@ -5,24 +5,24 @@
     <t t-call="web.html_container">
         <t t-foreach="docs" t-as="doc">
             <t t-call="web.external_layout">
-                <div class="page" style="width: 80mm; font-size: 10px;">
+                <div class="page" style="width: 80mm; height: 210mm; font-size: 10px;">
                     <!-- Encabezado -->
-                    <div class="header">
-                        <div style="text-align: center;">
-                            <h3 style="margin: 5px;">MURZIEZ S.R.L</h3>
-                            <p style="margin: 2px;">REMEDIOS DE ESCALADA 3570 - Buenos Aires</p>
-                            <p style="margin: 2px;">Tel: 4660-1625 | www.murziez.ar</p>
-                        </div>
+                    <div class="header" style="text-align: center;">
+                        <h3 style="margin: 5px;">MURZIEZ S.R.L</h3>
+                        <p style="margin: 2px;">REMEDIOS DE ESCALADA 3570 - Buenos Aires</p>
+                        <p style="margin: 2px;">Tel: 4660-1625 | www.murziez.ar</p>
                     </div>
 
                     <hr style="border: 1px dashed;"/>
 
                     <!-- Datos del cliente -->
-                    <div>
+                    <div style="margin-bottom: 10mm;">
                         <p><strong>Cliente:</strong> <t t-esc="doc.partner_id.name"/></p>
                         <p><strong>DNI:</strong> <t t-esc="doc.partner_id.vat"/></p>
                         <p><strong>Dirección:</strong> <t t-esc="doc.partner_id.street"/></p>
                         <p><strong>Ciudad:</strong> <t t-esc="doc.partner_id.city"/> - <t t-esc="doc.partner_id.state_id.name"/> - <t t-esc="doc.partner_id.zip"/></p>
+                        <p><strong>Número de factura:</strong> <t t-esc="doc.name"/></p>
+                        <p><strong>Fecha de factura:</strong> <t t-esc="doc.invoice_date"/></p>
                     </div>
 
                     <hr style="border: 1px dashed;"/>
@@ -32,16 +32,16 @@
                         <table class="table table-sm" style="width: 100%; border-collapse: collapse;">
                             <thead>
                                 <tr style="border-bottom: 1px dashed;">
-                                    <th style="text-align: left;">Nombre</th>
+                                    <th style="text-align: left;">Descripción</th>
                                     <th style="text-align: right;">Cant.</th>
                                     <th style="text-align: right;">Precio</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <t t-foreach="doc.order_line" t-as="line">
+                                <t t-foreach="doc.invoice_line_ids" t-as="line">
                                     <tr>
-                                        <td><t t-esc="line.product_id.name"/></td>
-                                        <td style="text-align: right;"><t t-esc="line.product_uom_qty"/></td>
+                                        <td><t t-esc="line.name"/></td>
+                                        <td style="text-align: right;"><t t-esc="line.quantity"/></td>
                                         <td style="text-align: right;">$<t t-esc="line.price_total"/></td>
                                     </tr>
                                 </t>
@@ -52,7 +52,9 @@
                     <hr style="border: 1px dashed;"/>
 
                     <!-- Totales -->
-                    <div style="text-align: right;">
+                    <div style="text-align: right; margin-bottom: 20mm;">
+                        <p><strong>Subtotal:</strong> $<t t-esc="doc.amount_untaxed"/></p>
+                        <p><strong>Impuestos:</strong> $<t t-esc="doc.amount_tax"/></p>
                         <p><strong>Total:</strong> $<t t-esc="doc.amount_total"/></p>
                     </div>
 
