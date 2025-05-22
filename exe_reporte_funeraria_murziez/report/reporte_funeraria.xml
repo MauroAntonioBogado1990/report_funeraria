@@ -2,7 +2,7 @@
 <odoo>
 <data>
 <template id="reporte_funeraria_impreso">
-    <t t-call="web.html_container">
+ <t t-call="web.html_container">
         <t t-foreach="docs" t-as="doc">
             <t t-call="web.external_layout">
                 <div class="page" style="width: 80mm; height: 210mm; font-size: 10px;">
@@ -10,41 +10,45 @@
                     <!-- <div class="header" style="text-align: center;">
                         <img src="/path/to/logo.png" alt="Funeraria Murziez" style="width: 50mm;"/>
                     </div> -->
-                      
+                    
                     <p style="margin: 2px;"><strong><t t-esc="doc.company_id.name"/></strong></p>
                     <p style="margin: 2px;">CUIT :<t t-esc="doc.company_id.l10n_ar_gross_income_number"/></p>
-                    <p style="margin: 2px;">IVA :<t t-esc="doc.company_id.l10n_ar_afip_responsibility_type_id"/></p>
+                    <p style="margin: 2px;">IVA :<t t-esc="doc.company_id.l10n_ar_afip_responsibility_type_id.name"/></p>
                     <p style="margin: 2px;">Ing. Brutos :<t t-esc="doc.company_id.l10n_ar_afip_start_date"/></p>
                     <p style="margin: 2px;">Inicio de actividades :<t t-esc="doc.company_id.l10n_ar_afip_start_date"/></p>
                     <p style="margin: 2px;">Direccion :<t t-esc="doc.company_id.street"/></p>
                     
-                    
                     <!-- Encabezado -->
-                    <!-- <div class="header" style="text-align: center;">
-                        <h3 style="margin: 5px;">MURZIEZ S.R.L</h3>
+                    <!--<div class="header" style="text-align: center;">
+                         <h3 style="margin: 5px;">MURZIEZ S.R.L</h3> 
+                        <h3 style="margin: 5px;"><t t-esc="doc.company_id.name"/></h3>
                         <p style="margin: 2px;">REMEDIOS DE ESCALADA 3570 - Buenos Aires</p>
                         <p style="margin: 2px;">Tel: 4660-1625 | www.murziez.ar</p>
-                    </div> -->
+                    </div>-->
 
                     <hr style="border: 1px dashed;"/>
 
                     <!-- Datos del cliente -->
-                 <div style="margin-bottom: 5mm;">
+                    <div style="margin-bottom: 2mm;">
                         
                         <p style="margin-bottom: 2px;"><strong> <t t-esc="doc.l10n_latam_document_type_id.name"/></strong></p>
                         <p style="margin-bottom: 2px;"><strong> <t t-esc="doc.name"/></strong></p>
-                        <p style="margin-bottom: 2px;"><strong>Cliente:</strong> <t t-esc="doc.partner_id.name"/></p>
-                        <p style="margin-bottom: 2px;"><strong>DNI:</strong> <t t-esc="doc.partner_id.vat"/></p>
-                        <p style="margin-bottom: 2px;"><strong>Dirección:</strong> <t t-esc="doc.partner_id.street"/></p>
-                        <p style="margin-bottom: 2px;"><strong>Ciudad:</strong> <t t-esc="doc.partner_id.city"/> - <t t-esc="doc.partner_id.state_id.name"/> - <t t-esc="doc.partner_id.zip"/></p>
+                        <p style="margin-bottom: 2px;"><strong> <t t-esc="doc.invoice_date"/></strong></p>
                         
-                        <p style="margin-bottom: 2px;"><strong>Fecha de factura:</strong> <t t-esc="doc.invoice_date"/></p>
-                        <p style="margin-bottom: 2px;"><strong>CUIT:</strong> <t t-esc="doc.partner_id.vat"/></p>
                         <!-- <p style="margin-bottom: 2px;"><strong>Condición de IVA:</strong> <t t-esc="doc.partner_id.l10n_ar_afip_responsibility_type"/></p> -->
                     </div>
 
-
                     <hr style="border: 1px dashed;"/>
+                    
+                      <div style="margin-bottom: 2mm;">
+                        
+                         <p style="margin: 2px;">Fecha de servicio :&gt;</p>
+                         <p style="margin: 2px;">N° de socio:&gt;</p>
+                         <p style="margin-bottom: 2px;"><strong>Cliente:</strong> <t t-esc="doc.partner_id.name"/></p>
+                         <p style="margin: 2px;">Adhrentes</p>
+                        <p style="margin-bottom: 2px;"><strong>Cond IVA:</strong> <t t-esc="doc.partner_id.l10n_ar_afip_responsibility_type_id.name"/></p>
+                        <!-- <p style="margin-bottom: 2px;"><strong>Condición de IVA:</strong> <t t-esc="doc.partner_id.l10n_ar_afip_responsibility_type"/></p> -->
+                    </div>
 
                     <!-- Productos -->
                     <div>
