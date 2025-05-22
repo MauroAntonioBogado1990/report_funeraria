@@ -6,6 +6,11 @@
         <t t-foreach="docs" t-as="doc">
             <t t-call="web.external_layout">
                 <div class="page" style="width: 80mm; height: 210mm; font-size: 10px;">
+                    <!-- Logo de la empresa -->
+                    <div class="header" style="text-align: center;">
+                        <img src="/path/to/logo.png" alt="Funeraria Murziez" style="width: 50mm;"/>
+                    </div>
+
                     <!-- Encabezado -->
                     <div class="header" style="text-align: center;">
                         <h3 style="margin: 5px;">MURZIEZ S.R.L</h3>
@@ -23,6 +28,8 @@
                         <p><strong>Ciudad:</strong> <t t-esc="doc.partner_id.city"/> - <t t-esc="doc.partner_id.state_id.name"/> - <t t-esc="doc.partner_id.zip"/></p>
                         <p><strong>Número de factura:</strong> <t t-esc="doc.name"/></p>
                         <p><strong>Fecha de factura:</strong> <t t-esc="doc.invoice_date"/></p>
+                        <p><strong>CUIT:</strong> <t t-esc="doc.partner_id.vat"/></p>
+                        <!-- <p><strong>Condición de IVA:</strong> <t t-esc="doc.partner_id.l10n_ar_afip_responsibility_type"/></p> -->
                     </div>
 
                     <hr style="border: 1px dashed;"/>
@@ -60,11 +67,20 @@
 
                     <hr style="border: 1px dashed;"/>
 
+                    <!-- Código QR y CAE -->
+                    <div style="text-align: center;">
+                        <!-- <img src="/path/to/qrcode.png" alt="Código QR" style="width: 30mm;"/>
+                        <p><strong>CAE:</strong> <t t-esc="doc.cae"/></p>
+                        <p><strong>Vencimiento CAE:</strong> <t t-esc="doc.cae_due_date"/></p> -->
+                    </div>
+
+                    <hr style="border: 1px dashed;"/>
+
                     <!-- Pie de página -->
-                    <div class="footer" style="text-align: center;">
+                    <!-- <div class="footer" style="text-align: center;">
                         <p>Gracias por su compra</p>
                         <p>Página <span class="page"/> de <span class="topage"/></p>
-                    </div>
+                    </div> -->
                 </div>
             </t>
         </t>
