@@ -29,16 +29,20 @@
                     <hr style="border: 1px dashed;"/>
 
                     <!-- Datos del cliente -->
-                  <div style="margin-bottom: 5mm;">
+                 <div style="margin-bottom: 5mm;">
+                        
+                        <p style="margin-bottom: 2px;"><strong> <t t-esc="doc.l10n_latam_document_type_id.name"/></strong></p>
+                        <p style="margin-bottom: 2px;"><strong> <t t-esc="doc.name"/></strong></p>
                         <p style="margin-bottom: 2px;"><strong>Cliente:</strong> <t t-esc="doc.partner_id.name"/></p>
                         <p style="margin-bottom: 2px;"><strong>DNI:</strong> <t t-esc="doc.partner_id.vat"/></p>
                         <p style="margin-bottom: 2px;"><strong>Dirección:</strong> <t t-esc="doc.partner_id.street"/></p>
                         <p style="margin-bottom: 2px;"><strong>Ciudad:</strong> <t t-esc="doc.partner_id.city"/> - <t t-esc="doc.partner_id.state_id.name"/> - <t t-esc="doc.partner_id.zip"/></p>
-                        <p style="margin-bottom: 2px;"><strong>Número de factura:</strong> <t t-esc="doc.name"/></p>
+                        
                         <p style="margin-bottom: 2px;"><strong>Fecha de factura:</strong> <t t-esc="doc.invoice_date"/></p>
                         <p style="margin-bottom: 2px;"><strong>CUIT:</strong> <t t-esc="doc.partner_id.vat"/></p>
                         <!-- <p style="margin-bottom: 2px;"><strong>Condición de IVA:</strong> <t t-esc="doc.partner_id.l10n_ar_afip_responsibility_type"/></p> -->
                     </div>
+
 
                     <hr style="border: 1px dashed;"/>
 
