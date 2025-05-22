@@ -11,9 +11,13 @@
                         <img src="/path/to/logo.png" alt="Funeraria Murziez" style="width: 50mm;"/>
                     </div> -->
                       
-                    <p style="margin: 2px;"><t t-esc="doc.company_id.name"/></p>
-                    <p style="margin: 2px;">Inicio de actividades<t t-esc="doc.company_id.l10n_ar_afip_start_date"/></p>
-                    <p style="margin: 2px;">Direccion<t t-esc="doc.company_id.street"/></p>
+                    <p style="margin: 2px;"><strong><t t-esc="doc.company_id.name"/></strong></p>
+                    <p style="margin: 2px;">CUIT :<t t-esc="doc.company_id.l10n_ar_gross_income_number"/></p>
+                    <p style="margin: 2px;">IVA :<t t-esc="doc.company_id.l10n_ar_afip_responsibility_type_id"/></p>
+                    <p style="margin: 2px;">Ing. Brutos :<t t-esc="doc.company_id.l10n_ar_afip_start_date"/></p>
+                    <p style="margin: 2px;">Inicio de actividades :<t t-esc="doc.company_id.l10n_ar_afip_start_date"/></p>
+                    <p style="margin: 2px;">Direccion :<t t-esc="doc.company_id.street"/></p>
+                    
                     
                     <!-- Encabezado -->
                     <!-- <div class="header" style="text-align: center;">
