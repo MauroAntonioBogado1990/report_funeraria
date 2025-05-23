@@ -6,18 +6,24 @@
         <t t-foreach="docs" t-as="doc">
             <t t-call="web.external_layout">
                 <div class="page" style="width: 80mm; height: 210mm; font-size: 10px;">
-                    <!-- Logo de la empresa -->
+                    
+                   <!-- Logo de la empresa -->
                     <!-- <div class="header" style="text-align: center;">
                         <img src="/path/to/logo.png" alt="Funeraria Murziez" style="width: 50mm;"/>
                     </div> -->
-                    
+                    <div style="flex: 1;">
                     <p style="margin: 2px;"><strong><t t-esc="doc.company_id.name"/></strong></p>
                     <p style="margin: 2px;">CUIT :<t t-esc="doc.company_id.l10n_ar_gross_income_number"/></p>
                     <p style="margin: 2px;">IVA :<t t-esc="doc.company_id.l10n_ar_afip_responsibility_type_id.name"/></p>
                     <p style="margin: 2px;">Ing. Brutos :<t t-esc="doc.company_id.l10n_ar_afip_start_date"/></p>
                     <p style="margin: 2px;">Inicio de actividades :<t t-esc="doc.company_id.l10n_ar_afip_start_date"/></p>
                     <p style="margin: 2px;">Direccion :<t t-esc="doc.company_id.street"/></p>
-                    
+                    </div>
+
+                    <div style="flex: 0;">
+                            <img src="/path/to/logo.png" alt="Logo Empresa" style="width: 40mm; height: auto;"/>
+                    </div>
+
                     <!-- Encabezado -->
                     <!--<div class="header" style="text-align: center;">
                          <h3 style="margin: 5px;">MURZIEZ S.R.L</h3> 
@@ -82,21 +88,32 @@
                     </div>
 
                     <hr style="border: 1px dashed;"/>
-
+                       <div style="text-align: left;">
+                        <p style="margin: 2px;">"Regimen de transparencia fiscal al consumidor (ley 27.743)"</p><br/>
+                        <p style="margin: 2px;">IVA Contenido $<t t-esc="doc.amount_tax"/></p><br/>
+                        <p style="margin: 2px;">Otros Impuestos indirectos $<t t-esc="doc.amount_tax"/></p><br/>
+                       
+                       
+                    </div> 
+                     <hr style="border: 1px dashed;"/>
                     <!-- Código QR y CAE -->
                     <div style="text-align: center;">
-                        <!-- <img src="/path/to/qrcode.png" alt="Código QR" style="width: 30mm;"/>
-                        <p><strong>CAE:</strong> <t t-esc="doc.cae"/></p>
-                        <p><strong>Vencimiento CAE:</strong> <t t-esc="doc.cae_due_date"/></p> -->
-                    </div>
+                      <!-- <div id="qrcode" t-if="o.display_qr_code">
+                        <p t-if="qr_code_urls.get(o.id)">
+                            
+                            <img class="border border-dark rounded" t-att-src="qr_code_urls[o.id]"/>
+                        </p> -->
+                         <p style="margin: 2px;">CAE:<t t-esc="doc.amount_tax"/></p>
+                         <p style="margin: 2px;">Fecha Vencimiento CAE:<t t-esc="doc.amount_tax"/></p>
+                      
+                    </div> 
 
-                    <hr style="border: 1px dashed;"/>
 
-                    <!-- Pie de página -->
-                    <!-- <div class="footer" style="text-align: center;">
-                        <p>Gracias por su compra</p>
-                        <p>Página <span class="page"/> de <span class="topage"/></p>
-                    </div> -->
+
+
+                    
+                    
+
                 </div>
             </t>
         </t>
