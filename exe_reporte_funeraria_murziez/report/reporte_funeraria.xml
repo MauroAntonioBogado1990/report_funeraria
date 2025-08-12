@@ -192,6 +192,16 @@
             name="exe_reporte_funeraria_murziez.reporte_funeraria_impreso"
             
         />
-    
+        <!-- este tiene que ir en realidad-->
+        <record id="action_funeraria_invoice_report" model="ir.actions.report">
+    <field name="name">Reporte Impresora</field>
+    <field name="model">account.move</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">exe_reporte_funeraria_murziez.reporte_funeraria_impreso</field>
+    <field name="report_file">exe_reporte_funeraria_murziez.reporte_funeraria_impreso</field>
+    <field name="binding_model_id" ref="account.model_account_move"/>
+    <field name="binding_type">report</field>
+</record> 
+
 </data>
 </odoo>
